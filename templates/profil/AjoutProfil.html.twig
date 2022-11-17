@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello NetworkController!{% endblock %}
+
+{% block body %}
+    <h1>Ajout Profil</h1>
+    {{ form_start(form,{'attr': {'novalidate': 'novalidate'}} ) }}
+    <table>
+        <tr>
+        <td>{{ form_label(form.Nom,"Nom") }}</td>
+        <td>{{ form_widget(form.Nom) }}</td>
+        <td>{{ form_errors(form.Nom) }}</td>
+        </tr>
+        <tr>
+            <td>{{ form_label(form.Prenom,"Prenom") }}</td>
+            <td>{{ form_widget(form.Prenom) }}</td>
+            <td>{{ form_errors(form.Prenom) }}</td>
+        </tr>
+        <tr>
+            <td>{{ form_label(form.Age,"Age") }}</td>
+            <td>{{ form_widget(form.Age) }}</td>
+            <td>{{ form_errors(form.Age) }}</td>
+        </tr>
+        <tr>
+            <td>{{ form_label(form.Email,"Email") }}</td>
+            <td>{{ form_widget(form.Email) }}</td>
+            <td>{{ form_errors(form.Email) }}</td>
+        </tr>
+        <tr>
+            <td>{{ form_label(form.Adresse,"Adresse") }}</td>
+            <td>{{ form_widget(form.Adresse) }}</td>
+            <td>{{ form_errors(form.Adresse) }}</td>
+        </tr>
+
+
+    </table>
+        {{ form_widget(form.Ajouter) }}
+    {{ form_end(form) }}
+{% endblock %}

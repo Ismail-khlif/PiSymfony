@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello NetworkController!{% endblock %}
+
+{% block body %}
+
+    <h2> Liste des AMIS</h2>
+    <table border="2">
+        <tr>
+            <th>Id</th><th>Amis</th><th>Discussion</th><th>UPDATE</th><th>DELETE</th>
+        </tr>
+        <tr {% for c in Network %} >
+            <td>{{ c.id }}</td>
+            <td>{{ c.Amis }}</td>
+            <td>{{ c.Discussion }}</td>
+            <td><a href="{{ path('update',{'id':c.id}) }}">Update</a></td>
+            <td><a href="{{ path('d',{'id':c.id}) }}">Delete</a></td>
+        </tr {% endfor %}>
+    </table>
+
+{% endblock %}

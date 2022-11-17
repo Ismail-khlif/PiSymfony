@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello NetworkController!{% endblock %}
+
+{% block body %}
+    <h1>Ajout Discussion</h1>
+    {{ form_start(form,{'attr': {'novalidate': 'novalidate'}} ) }}
+    <table>
+        <tr>
+            <td>{{ form_label(form.Amis,"Amis") }}</td>
+            <td>{{ form_widget(form.Amis) }}</td>
+            <td>{{ form_errors(form.Amis) }}</td>
+        </tr>
+        <tr>
+            <td>{{ form_label(form.Discussion,"Discussion") }}</td>
+            <td>{{ form_widget(form.Discussion) }}</td>
+            <td>{{ form_errors(form.Discussion) }}</td>
+        </tr>
+        <tr>
+            <td>{{ form_label(form.profil,"Profil") }}</td>
+            <td>{{ form_widget(form.profil) }}</td>
+            <td>{{ form_errors(form.profil) }}</td>
+        </tr>
+
+    </table>
+    {{ form_widget(form.Ajouter) }}
+    {{ form_end(form) }}
+{% endblock %}

@@ -1,0 +1,25 @@
+
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello NetworkController!{% endblock %}
+
+{% block body %}
+
+
+
+Discussion Id:{{ c.id }}
+Student of {{ c.name }}
+<table border="2">
+    <tr>
+        <th>NSC</th><th>EMAIL</th><th>Classroom</th>
+    </tr>
+    <tr {% for c in student %} >
+        <td>{{ c.nsc }}</td>
+        <td>{{ c.nom }}</td>
+        <td>{{ c.profil.nom }}</td>
+
+    </tr {% endfor %}>
+</table>
+
+
+{% endblock %}
