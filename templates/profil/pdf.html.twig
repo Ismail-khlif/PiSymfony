@@ -1,0 +1,48 @@
+<center><h1> Afficher Profil </h1></center>
+
+<style>
+    body{
+        font:normal 12px/20PX "Liberation sans", Arial, Helvetica, sans-serif;
+        color:#585858;
+    }
+    img{
+        width:300px;
+        margin:10px;
+        border: solid 5px #E8E8E8;
+
+    }
+</style>
+
+
+<div class="card-body table-responsive p-0">
+    <div>Logo</div>
+
+
+
+    <img src='data:image;base64,<?= {{img64 }};?>' />
+
+    <table class="table table-hover text-nowrap" border="1">
+        <thead>
+        <tr>
+            <th>ID</th><th>Nom</th><th>Prenom</th><th>Age</th><th>Email</th><th>Addresse</th><th>UPDATE</th><th>DELETE</th>
+        </tr>
+        </thead>
+
+
+        {% for c in titre %}
+            <tbody id="myTable">
+            <tr  >
+                <td>{{ c.id }}</td>
+                <td>{{ c.nom }}</td>
+                <td>{{ c.prenom }}</td>
+                <td>{{ c.age }}</td>
+                <td>{{ c.email }}</td>
+                <td>{{ c.adresse }}</td>
+
+            </tr >
+            </tbody>
+
+        {% endfor %}
+
+    </table>
+</div>

@@ -11,6 +11,14 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
+use Dompdf\Dompdf;
+use Dompdf\Options;
+
+
+
+//use Symfony\Component\OptionsResolver\Options;
+
+
 class ProfilController extends AbstractController
 {
     #[Route('/profil', name: 'app_profil')]
@@ -66,6 +74,46 @@ class ProfilController extends AbstractController
 
 
 
+    }
+    /**
+     * @param ProfilRepository $repository
+     * @return Response
+     * @Route ("/PDF",name="PDF")
+     */
+    public function PublicationPDF(ProfilRepository $repository)
+    {
+
+        // Configure Dompdf according to your needs
+        $pdfOptions = new Options();
+        $pdfOptions->set('defaultFont', 'Arial');
+
+        // Instantiate Dompdf with our options
+        $dompdf = new Dompdf($pdfOptions);
+        //l'image est située au niveau du dossier public
+        $png = file_get_contents("sample-image.jpg");
+        $pngbase64 = base64_encode($png);
+
+        // Retrieve the HTML generated in our twig file
+
+        $publication = $repository->findAll();
+        // Load HTML to Dompdf
+        $html = $this->renderView('profil/pdf.html.twig',
+            ['titre'=> $publication,
+                "img64"=>$pngbase64
+            ]);
+
+        $dompdf->loadHtml($html);
+
+        // (Optional) Setup the paper size and orientation 'portrait' or 'portrait'
+        $dompdf->setPaper('A4', 'landscape');
+
+        // Render the HTML as PDF
+        $dompdf->render();
+
+        // Output the generated PDF to Browser (force download)
+        $dompdf->stream("pdf.pdf", [
+            "Attachment" => false
+        ]);
     }
 
 

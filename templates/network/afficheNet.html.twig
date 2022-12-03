@@ -5,6 +5,43 @@
 {% block body %}
 
     <h2> Liste des AMIS</h2>
+
+    <form action="/recherche" method="post"
+          class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+        <div class="input-group">
+            <input type="text" name="searche" class="form-control bg-light border-0 small" placeholder="recherche..."
+                   aria-label="Search" aria-describedby="basic-addon2">
+            <div class="input-group-append">
+                <button class="btn btn-primary" type="submit" value="recherche">
+                    <i class="fas fa-search fa-sm"></i>
+                </button>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 col-lg-12">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-title">Liste des Amis</div>
+                    </div>
+                    <div class="card-body">
+                        <form role="search" id="nav-search-form" method="post" action="{{ path('triid') }}"> {#bouton tri#}
+
+
+                            <div class="btn-toolbar" role="toolbar" aria-label="Programmatic control">
+                                <div class="btn-group btn-group-sm" aria-label="Set Select2 option">
+                                    <button class="js-programmatic-set-val btn btn-outline-primary mr-1 mb-1">
+                                        Sort by Amis
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+
+
     <table border="2">
         <tr>
             <th>Id</th><th>Amis</th><th>Discussion</th><th>UPDATE</th><th>DELETE</th>
@@ -13,8 +50,8 @@
             <td>{{ c.id }}</td>
             <td>{{ c.Amis }}</td>
             <td>{{ c.Discussion }}</td>
-            <td><a href="{{ path('update',{'id':c.id}) }}">Update</a></td>
-            <td><a href="{{ path('d',{'id':c.id}) }}">Delete</a></td>
+            <td><a href="{{ path('updatee',{'id':c.id}) }}">Update</a></td>
+            <td><a href="{{ path('de',{'id':c.id}) }}">Delete</a></td>
         </tr {% endfor %}>
     </table>
 
